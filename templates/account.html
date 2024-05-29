@@ -1,0 +1,36 @@
+{% extends 'base.html' %} {% block title %} Your Account {% endblock title %} {%
+block body %}
+<div class="text-center my-3 container">
+    <h1 class="my-3">Your Account</h1>
+    <br /><br /><br />
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email</label>
+        <input
+            type="text"
+            class="form-control"
+            id="exampleInputEmail1"
+            value="{{query.email}}"
+            aria-describedby="emailHelp"
+            disabled
+        />
+        <a class="btn btn-outline-primary my-3" href="/account/edit">Edit</a>
+    </div>
+    <br /><br /><br />
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Password</label>
+        <input
+            type="password"
+            class="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+            value="{{query.password}}"
+            disabled
+        />
+        <a class="btn btn-outline-primary my-3" href="/account/edit/pass"
+            >Edit</a
+        >
+    </div>
+    <br /><br /><br />
+    <a class="btn btn-outline-danger" href="/account/delete">Delete Account</a>
+</div>
+{% endblock body %}

@@ -1,0 +1,12 @@
+{% extends 'base.html' %} {% block title %} QR Code Generated Successfully {%
+endblock title %} {% block body %}
+<div class="text-center">
+    <h1 class="my-3">Generated QRcode :</h1>
+    <img
+        src="{{url_for('static', filename='qrcodes/'+fname)}}"
+        class="my-3"
+    /><br />
+    <a class="btn btn-outline-primary" href="/download/{{fname}}">Download</a>
+    <a class="btn btn-outline-primary mx-1" href="/home">Home</a>
+</div>
+{% endblock body %}

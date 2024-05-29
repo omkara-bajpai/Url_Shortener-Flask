@@ -1,0 +1,20 @@
+{% extends 'base.html' %} {% block title %} Edit your Username {% endblock title
+%} {% block body %}
+<div class="container my-3 text-center">
+    <h1 class="my-3">Edit your Email</h1>
+    <br /><br /><br /><br />
+    <form action="/account/edit" method="post">
+        <input
+            type="email"
+            class="form-control"
+            value="{{query.email}}"
+            name="email"
+        />
+        {% with messages = get_flashed_messages() %} {% if messages %} {% for
+        message in messages %}
+        <div class="alert alert-danger my-3" role="alert">{{message}}</div>
+        {% endfor %} {% endif %} {% endwith %}
+        <button class="btn btn-outline-primary my-3" type="submit">Save</button>
+    </form>
+</div>
+{% endblock body %}

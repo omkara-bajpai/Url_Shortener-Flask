@@ -1,0 +1,28 @@
+{% extends 'base.html' %} {% block title %} Url Generated {% endblock title %}
+{% block body %}
+
+<div class="container my-3 text-center">
+    <h1 class="text-center">Url Generated:</h1>
+
+    <h2 class="text-center" id="url">{{request.url_root}}links/{{url}}</h2>
+    <button type="button" class="btn btn-outline-primary my-3" onclick="copy()">
+        Copy
+    </button>
+    <a type="button" class="btn btn-outline-primary my-3" href="/home">
+        Home
+    </a>
+</div>
+<script>
+    function copy() {
+        const text = document.getElementById("url");
+
+        const fakeText = document.createElement("textarea");
+        fakeText.innerHTML = text.innerHTML;
+        document.body.appendChild(fakeText);
+
+        fakeText.select();
+        document.execCommand("copy");
+        document.body.removeChild(fakeText);
+    }
+</script>
+{% endblock body %}

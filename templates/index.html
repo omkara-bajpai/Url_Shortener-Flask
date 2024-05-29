@@ -1,0 +1,33 @@
+{% extends 'base.html' %} {% block title %} Create a short link {% endblock
+title %} {% block body %}
+
+<div class="container my-3 text-center">
+    <h1>URL SHORTENER</h1>
+    <h3>Note : Any text you enter will be also considered as an URL</h3>
+    <br />
+    {% with messages = get_flashed_messages() %} {% if messages %} {% for
+    message in messages %}
+    <div class="alert alert-danger mt-0" role="alert">{{message}}</div>
+    {% endfor %} {% endif %} {% endwith %}
+    <form method="post" action="{{ url_for('create')}}">
+        <input
+            class="text"
+            type="text"
+            name="long_url"
+            placeholder="Enter the long URL"
+            style="width: 500px"
+        />
+        <select
+            class="form-select my-3"
+            aria-label="Operation to be done"
+            name="operation"
+        >
+            <option selected value="default">Generate short url</option>
+            <option value="qr">Make QR code</option>
+        </select>
+        <button type="submit" class="btn btn-outline-primary mx-2">
+            Create
+        </button>
+    </form>
+</div>
+{% endblock body %}

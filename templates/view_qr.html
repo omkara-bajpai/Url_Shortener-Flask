@@ -1,0 +1,17 @@
+{% extends 'base.html' %} {% block title %} Dashboard {% endblock title %} {%
+block body %}
+<div class="text-center my-3">
+    <h1 class="my-3">Url</h1>
+    <h2 class="my-3">{{query.long_url}}</h2>
+    <br />
+    <h2>Image</h2>
+    <img
+        src="{{url_for('static', filename='qrcodes/'+query.qr_image)}}"
+        alt="error"
+    /><br />
+    <a class="btn btn-outline-primary" href="/download/{{query.qr_image}}"
+        >Download</a
+    >
+    <a class="btn btn-outline-primary mx-1" href="/home">Home</a>
+</div>
+{% endblock body %}

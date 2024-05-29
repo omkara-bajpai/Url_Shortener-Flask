@@ -1,0 +1,23 @@
+{% extends 'base.html' %} {% block title %} Delete your account {% endblock
+title %} {% block body %}
+<div class="text-center my-3 container">
+    <h1>Delete your Account</h1>
+    <br />
+    <br />
+    <p class="text-danger">
+        Are you sure you want to delete your account?You will loose every short
+        link and qr code made and this cant be undo
+        <br /><br />
+        Write you account's email and password to confirm account delete <br /><br />
+        <form action="/account/delete" method="post">
+            <input type="email" name="email" id="email" style="width: 500px" placeholder="Email" /><br><br>
+            <input type="password" name="pass" id="email" style="width: 500px" placeholder="Password" /><br><br>
+            {% with messages = get_flashed_messages() %} {% if messages %} {% for
+                message in messages %}
+                <div class="alert alert-danger" role="alert">{{message}}</div>
+                {% endfor %} {% endif %} {% endwith %}
+            <button type="submit" class="btn btn-outline-danger">Delete</button>
+        </form>
+    </p>
+</div>
+{% endblock body %}

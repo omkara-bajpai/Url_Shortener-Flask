@@ -1,0 +1,35 @@
+{% extends 'base.html' %} {% block title %} Dashboard {% endblock title %} {%
+block body %}
+<div class="container my-3 text-center">
+    {% if urls|length == 0 %}
+    <div class="alert alert-dark alert-dismissible fade show" role="alert">
+        You dont have any shortened urls go ahead and create one !
+        <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="alert"
+            aria-label="Close"
+        ></button>
+    </div>
+    {% else %}Your Urls:
+    <br />{% for url in urls %} {% if url.qr_id %}
+    <a
+        href="/view_qr/{{url.qr_id}}"
+        class="list-group-item list-group-item-action list-group-item-light"
+    >
+        {{url.long_url}} (Qr Code)</a
+    >
+    {% else %}
+
+    <a
+        href="/view/{{url.short}}"
+        class="list-group-item list-group-item-action list-group-item-light"
+        >{{url.long_url}} (Shorten url)</a
+    >
+    {% endif %} {% endfor %} {% endif %}
+
+    <a type="button" class="btn btn-outline-primary my-3" href="/create">
+        Create
+    </a>
+</div>
+{% endblock body %}

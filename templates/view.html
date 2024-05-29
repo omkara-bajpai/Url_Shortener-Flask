@@ -1,0 +1,47 @@
+{% extends 'base.html' %} {% block title %} Dashboard {% endblock title %} {%
+block body %}
+<div class="conatiner my-3 text-center">
+    <h1 class="text-center">Url:</h1>
+    <h2 class="my-3" id="url">{{request.url_root}}links/{{query.short}}</h2>
+
+    <button type="button" class="btn btn-outline-primary mb-3" onclick="copy()">
+        Copy
+    </button>
+    <h1 class="text-center">Long url:</h1>
+    <h2 class="my-3" id="long">{{query.long_url}}</h2>
+    <button
+        type="button"
+        class="btn btn-outline-primary mb-3"
+        onclick="copylong()"
+    >
+        Copy
+    </button>
+    <h1 class="text-center">Number of opens:</h1>
+    <h2 class="text-center">{{query.click}}</h2>
+    <a class="btn btn-outline-primary my-3" href="/home">Home</a>
+</div>
+<script>
+    function copy() {
+        const text = document.getElementById("url");
+
+        const fakeText = document.createElement("textarea");
+        fakeText.innerHTML = text.innerHTML;
+        document.body.appendChild(fakeText);
+
+        fakeText.select();
+        document.execCommand("copy");
+        document.body.removeChild(fakeText);
+    }
+    function copylong() {
+        const text = document.getElementById("long");
+
+        const fakeText = document.createElement("textarea");
+        fakeText.innerHTML = text.innerHTML;
+        document.body.appendChild(fakeText);
+
+        fakeText.select();
+        document.execCommand("copy");
+        document.body.removeChild(fakeText);
+    }
+</script>
+{% endblock body %}
